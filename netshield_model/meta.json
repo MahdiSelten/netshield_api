@@ -1,0 +1,41 @@
+{
+  "numerical_columns": [
+    "frame length",
+    "IP TTL",
+    "IP Flags",
+    "IP DSCP Field",
+    "TCP SYN Flag",
+    "TCP ACK Flag",
+    "TCP FIN Flag",
+    "TCP RST Flag",
+    "TCP Window Size",
+    "ICMP Type",
+    "delta_time",
+    "packet_ratio",
+    "Destination Port",
+    "has_encapsulation",
+    "TCP PSH Flag",
+    "is_tcp",
+    "is_icmp",
+    "is_http",
+    "is_dns",
+    "DNS_missing",
+    "is_arp",
+    "port_not_applicable",
+    "port_present",
+    "ttl_not_applicable",
+    "ttl_true_missing",
+    "ttl_present",
+    "DSCP_malformed"
+  ],
+  "textual_columns": [
+    "Protocol",
+    "IP Protocol",
+    "HTTP Request Method",
+    "HTTP Response Code",
+    "HTTP Content-Length",
+    "HTTP Content Type",
+    "DNS Query Type"
+  ],
+  "threshold": 0.47284120321273804
+}
