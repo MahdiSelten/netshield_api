@@ -1,9 +1,4 @@
-"""
-NetShield — Preprocessing Pipeline + Inference
-===============================================
-Converts raw NetShield API POST payloads into model-ready DataFrames
-and runs the autoencoder to detect attacks.
-"""
+
 
 import os
 import json
@@ -13,9 +8,6 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
 
 _PROTO_MAP = {1: "ICMP", 6: "TCP", 17: "UDP"}
 
@@ -61,9 +53,6 @@ TEXTUAL_COLUMNS = [
 
 MODEL_COLUMNS = NUMERICAL_COLUMNS + TEXTUAL_COLUMNS
 
-# ---------------------------------------------------------------------------
-# Global inference state (populated by load_model())
-# ---------------------------------------------------------------------------
 
 _autoencoder         = None
 _encoder_for_targets = None
@@ -120,9 +109,6 @@ def is_loaded() -> bool:
     return _autoencoder is not None
 
 
-# ---------------------------------------------------------------------------
-# Per-packet preprocessing
-# ---------------------------------------------------------------------------
 
 def _transform_packet(pkt: dict[str, Any], window_seconds: float, total_packets: int) -> dict:
     proto_num = pkt["ip_protocol"]
@@ -215,9 +201,6 @@ def preprocess_window(payload: dict[str, Any]) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=MODEL_COLUMNS)
 
 
-# ---------------------------------------------------------------------------
-# Inference
-# ---------------------------------------------------------------------------
 
 def predict_window(df: pd.DataFrame) -> dict[str, Any]:
     if _autoencoder is None:
